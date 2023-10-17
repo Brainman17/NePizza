@@ -1,8 +1,9 @@
-import styles from "./NotFound.module.css";
+import { FC } from "react";
+import styles from "./NotFound.module.scss";
 import errorImg from "../../static/404-error.png";
 import smile from "../../static/thinking.png";
 
-const NotFound = () => {
+const NotFound: FC = () => {
   return (
     <div className={styles.wrap}>
       <img className={styles.wrap__img} src={errorImg} alt="error" />

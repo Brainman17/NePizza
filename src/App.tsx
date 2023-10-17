@@ -3,7 +3,7 @@ import routesConfig from "./utils/routesConfig";
 import "./scss/app.scss";
 import Layout from "./components/Layout";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Layout>
       <Routes>

@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BASEURL } from "../constants/api";
 import { useDispatch, useSelector } from "react-redux";
 import { selectPizzaData, setPizzaItem } from "../redux/slices/pizzasSlice";
 
-const FullPizza = () => {
+const FullPizza: FC = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,10 +23,6 @@ const FullPizza = () => {
       navigate("/");
     }
   }, [dispatch, id, navigate]);
-
-  //   if (!item) {
-  //     return "Загрузка ...";
-  //   }
 
   return (
     <div className="container content">

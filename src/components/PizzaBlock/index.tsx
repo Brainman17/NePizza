@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import add from "../../static/add.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCart } from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
 
-const typeNames = ["тонкое", "традиционное"];
+const typeNames: string[] = ["тонкое", "традиционное"];
 
-const PizzaBlock = ({ pizza }) => {
-  const [isActive, setIsActive] = useState(false);
-  const [isSizeActive, setIsSizeActive] = useState(0);
-  const [isTypeActive, setIsTypeActive] = useState(0);
+type PizzaBlockProps = {
+  pizza: {
+    id: string;
+    title: string;
+    imageUrl: string;
+    price: number;
+    types: number[];
+    sizes: number[];
+    rating: number;
+  };
+};
+
+const PizzaBlock: FC<PizzaBlockProps> = ({ pizza }) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isSizeActive, setIsSizeActive] = useState<number>(0);
+  const [isTypeActive, setIsTypeActive] = useState<number>(0);
 
   const dispatch = useDispatch();
 
@@ -28,7 +40,7 @@ const PizzaBlock = ({ pizza }) => {
 
   const { items } = useSelector(selectCart);
 
-  const cartItem = items.find((obj) => obj.id === pizza.id);
+  const cartItem = items.find((obj: any) => obj.id === pizza.id);
 
   const addedCount = cartItem ? cartItem.count : 0;
 
@@ -48,8 +60,9 @@ const PizzaBlock = ({ pizza }) => {
                   setIsTypeActive(typeId);
                 }}
                 className={
-                  (isTypeActive === typeId || pizza.types.length === 1) &&
-                  "active"
+                  isTypeActive === typeId || pizza.types.length === 1
+                    ? "active"
+                    : ""
                 }
               >
                 {typeNames[typeId]}
@@ -63,7 +76,7 @@ const PizzaBlock = ({ pizza }) => {
               onClick={() => {
                 setIsSizeActive(index);
               }}
-              className={index === isSizeActive && "active"}
+              className={index === isSizeActive ? "active" : ""}
               key={index}
             >
               {size}

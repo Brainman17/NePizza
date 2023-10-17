@@ -3,8 +3,27 @@ import plus from "../static/plus.svg";
 import minus from "../static/minus.svg";
 import deleteBasket from "../static/delete.png";
 import { addItem, removeItem, minusItem } from "../redux/slices/cartSlice";
+import { FC } from "react";
 
-const CartItem = ({ id, imageUrl, price, title, type, size, count }) => {
+type CartItemProps = {
+  id: string;
+  imageUrl: string;
+  price: number;
+  title: string;
+  type: string;
+  size: number;
+  count: number;
+};
+
+const CartItem: FC<CartItemProps> = ({
+  id,
+  imageUrl,
+  price,
+  title,
+  type,
+  size,
+  count,
+}) => {
   const dispatch = useDispatch();
 
   const onClickPlus = () => {

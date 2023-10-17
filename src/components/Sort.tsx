@@ -10,14 +10,14 @@ const Sort = () => {
   const { sortType } = useSelector(selectFilter);
   const [isOpen, setIsOpen] = useState(false);
 
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
 
-  const handlePopup = (bool) => {
+  const handlePopup = (bool: boolean) => {
     setIsOpen(bool);
   };
 
   useEffect(() => {
-    const handleClickOutside = (evt) => {
+    const handleClickOutside = (evt: any) => {
       const pathArray = evt.composedPath();
 
       if (!pathArray.includes(sortRef.current)) {
@@ -55,7 +55,7 @@ const Sort = () => {
                 <li
                   key={index}
                   className={
-                    sortType.sortProperty === obj.sortProperty && "active"
+                    sortType.sortProperty === obj.sortProperty ? "active" : ""
                   }
                   onClick={() => {
                     dispatch(setSortType(obj));

@@ -2,10 +2,16 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { setCurrentPage } from "../../redux/slices/filterSlice";
 import styles from "./Pagination.module.scss";
 import { useDispatch } from "react-redux";
+import { FC } from "react";
 
-const Pagination = ({ items, currentPage }) => {
+type PaginationProps = {
+  items: [];
+  currentPage: number;
+};
+
+const Pagination: FC<PaginationProps> = ({ items, currentPage }) => {
   const dispatch = useDispatch();
-  const handleChangePage = (currentPage) => {
+  const handleChangePage = (currentPage: number) => {
     dispatch(setCurrentPage(currentPage));
   };
 

@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// type InitialStateItem = {
+//   searchValue: string,
+//   categoryId: number,
+//   currentPage: number,
+//   sortType: {
+//     name: string,
+//     sortProperty: string,
+//   },
+// };
+
 const initialState = {
   searchValue: "",
   categoryId: 0,

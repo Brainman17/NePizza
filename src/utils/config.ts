@@ -1,4 +1,9 @@
-const sortArray = [
+type SortListItem = {
+  name: string;
+  sortProperty: string;
+}
+
+const sortArray: SortListItem[] = [
   {
     name: "популярности(DESC)",
     sortProperty: "rating",
@@ -22,7 +27,7 @@ const sortArray = [
   {
     name: "алфавиту(ASC)",
     sortProperty: "-title",
-  },
+  }
 ];
 
 export default sortArray;

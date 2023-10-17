@@ -1,7 +1,11 @@
-import React from "react";
+import React, { FC, ReactNode } from "react";
 import Header from "./Header";
 
-export const Layout = ({ children }) => {
+type LayoutProps = {
+  children: ReactNode;
+};
+
+const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className="App">
       <div className="wrapper">

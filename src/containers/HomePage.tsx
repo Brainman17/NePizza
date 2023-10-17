@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
@@ -16,7 +16,7 @@ import {
 import sortArray from "../utils/config";
 import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzasSlice";
 
-const HomePage = ({ setCount, count }) => {
+const HomePage: FC = () => {
   const isSearch = useRef(false);
   const isMounted = useRef(false);
 
@@ -39,6 +39,7 @@ const HomePage = ({ setCount, count }) => {
     const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
     const titleValue = searchValue && `&title=${searchValue}`;
 
+    // @ts-ignore
     dispatch(fetchPizzas({ currentPage, category, sortBy, order, titleValue }));
   };
 
@@ -80,7 +81,7 @@ const HomePage = ({ setCount, count }) => {
   }, [categoryId, sortType, searchValue, currentPage]);
 
   // functions
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
   };
 
@@ -103,15 +104,8 @@ const HomePage = ({ setCount, count }) => {
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
           {status === "success" ? (
-            items.map((pizza) => {
-              return (
-                <PizzaBlock
-                  key={pizza.id}
-                  pizza={pizza}
-                  setCount={setCount}
-                  count={count}
-                />
-              );
+            items.map((pizza: any) => {
+              return <PizzaBlock key={pizza.id} pizza={pizza} />;
             })
           ) : status === "loading" ? (
             skeletons && status === "error"
