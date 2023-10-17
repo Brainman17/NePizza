@@ -17,10 +17,10 @@ const Sort = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (evt: any) => {
+    const handleClickOutside = (evt: MouseEvent) => {
       const pathArray = evt.composedPath();
 
-      if (!pathArray.includes(sortRef.current)) {
+      if (sortRef.current && !pathArray.includes(sortRef.current)) {
         handlePopup(false);
       }
     };
