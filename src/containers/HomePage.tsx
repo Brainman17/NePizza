@@ -1,5 +1,5 @@
 import { useEffect, useRef, FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import Categories from "../components/Categories";
@@ -14,7 +14,13 @@ import {
   setFilters,
 } from "../redux/slices/filterSlice";
 import sortArray from "../utils/config";
-import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzasSlice";
+import {
+  fetchPizzas,
+  selectPizzaData,
+  FetchPizzasParams,
+} from "../redux/slices/pizzasSlice";
+import { useAppDispatch } from "../redux/store";
+import { Status } from "../redux/slices/pizzasSlice";
 
 const HomePage: FC = () => {
   const isSearch = useRef(false);
@@ -27,7 +33,7 @@ const HomePage: FC = () => {
   const { items, status } = useSelector(selectPizzaData);
 
   // useDispatch
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // useNavigate
   const navigate = useNavigate();
@@ -39,37 +45,56 @@ const HomePage: FC = () => {
     const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
     const titleValue = searchValue && `&title=${searchValue}`;
 
-    // @ts-ignore
-    dispatch(fetchPizzas({ currentPage, category, sortBy, order, titleValue }));
+    dispatch(
+      fetchPizzas({
+        currentPage: String(currentPage),
+        category,
+        sortBy,
+        order,
+        titleValue: String(titleValue),
+      })
+    );
   };
 
-  // Если изменили параметры и был первый рендер
-  useEffect(() => {
-    if (isMounted.current) {
-      const queryString = qs.stringify({
-        currentPage,
-        categoryId,
-        sortProperty: sortType.sortProperty,
-      });
+  // // Если изменили параметры и был первый рендер
+  // useEffect(() => {
+  //   if (isMounted.current) {
+  //     const queryString = qs.stringify({
+  //       currentPage,
+  //       categoryId,
+  //       sortProperty: sortType.sortProperty,
+  //     });
 
-      navigate(`?${queryString}`);
-    }
+  //     navigate(`?${queryString}`);
+  //   }
 
-    isMounted.current = true;
-  }, [categoryId, sortType, currentPage, navigate]);
+  //   isMounted.current = true;
+  // }, [categoryId, sortType, currentPage, navigate]);
 
-  // Если был первый рендер, то проверяем URL-параметры и сохраняем их в Редаксе
-  useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.slice(1));
-      const sortType = sortArray.find(
-        (sort) => sort.sortProperty === params.sortProperty
-      );
+  // // Если был первый рендер, то проверяем URL-параметры и сохраняем их в Redux
+  // useEffect(() => {
+  //   if (window.location.search) {
+  //     const params = qs.parse(
+  //       window.location.search.slice(1) as unknown as FetchPizzasParams
+  //     );
+  //     const sortType = sortArray.find(
+  //       (sort) => sort.sortProperty === params.sortBy
+  //     );
 
-      dispatch(setFilters({ ...params, sortType }));
-      isSearch.current = true;
-    }
-  }, [dispatch]);
+  //     console.log(params);
+
+  //     dispatch(
+  //       setFilters({
+  //         searchValue: String(params.titleValue),
+  //         categoryId: Number(params.category),
+  //         currentPage: Number(params.currentPage),
+  //         sortType: sortType || sortArray[0],
+  //       })
+  //     );
+
+  //     isSearch.current = true;
+  //   }
+  // }, [dispatch]);
 
   // Если был первый рендер, то запрашиваем пиццы
   useEffect(() => {
@@ -91,6 +116,20 @@ const HomePage: FC = () => {
   //   p.title.toLowerCase().includes(searchValue.toLowerCase())
   // );
 
+  const itemsMap = items.map((pizza: any) => {
+    return <PizzaBlock key={pizza.id} {...pizza} />;
+  });
+
+  const itemsRender = () => {
+    if (status === Status.SUCCESS) {
+      return itemsMap;
+    } else if (status === Status.LOADING) {
+      return skeletons;
+    } else if (status === Status.ERROR) {
+      return <ServerError />;
+    }
+  };
+
   return (
     <div className="content">
       <div className="container">
@@ -102,17 +141,7 @@ const HomePage: FC = () => {
           <Sort />
         </div>
         <h2 className="content__title">Все пиццы</h2>
-        <div className="content__items">
-          {status === "success" ? (
-            items.map((pizza: any) => {
-              return <PizzaBlock key={pizza.id} pizza={pizza} />;
-            })
-          ) : status === "loading" ? (
-            skeletons && status === "error"
-          ) : (
-            <ServerError />
-          )}
-        </div>
+        <div className="content__items">{itemsRender()}</div>
       </div>
       <Pagination items={items} currentPage={currentPage} />
     </div>

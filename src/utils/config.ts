@@ -1,32 +1,30 @@
-type SortListItem = {
-  name: string;
-  sortProperty: string;
-}
+import { Sort } from '../redux/slices/filterSlice';
+import { SortPropertyEnum } from '../redux/slices/filterSlice';
 
-const sortArray: SortListItem[] = [
+const sortArray: Sort[] = [
   {
     name: "популярности(DESC)",
-    sortProperty: "rating",
+    sortProperty: SortPropertyEnum.RATING_ASC,
   },
   {
     name: "популярности(ASC)",
-    sortProperty: "-rating",
+    sortProperty: SortPropertyEnum.RATING_DESC,
   },
   {
     name: "цене(DESC)",
-    sortProperty: "price",
+    sortProperty: SortPropertyEnum.PRICE_ASC,
   },
   {
     name: "цене(ASC)",
-    sortProperty: "-price",
+    sortProperty: SortPropertyEnum.PRICE_DESC,
   },
   {
     name: "алфавиту(DESC)",
-    sortProperty: "title",
+    sortProperty: SortPropertyEnum.TITLE_ASC,
   },
   {
     name: "алфавиту(ASC)",
-    sortProperty: "-title",
+    sortProperty: SortPropertyEnum.TITLE_DESC,
   }
 ];
 

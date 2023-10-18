@@ -1,6 +1,7 @@
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
-const ServerError = () => {
+const ServerError: FC = () => {
   return (
     <div className="content">
       <div className="container container--cart">

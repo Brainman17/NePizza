@@ -1,11 +1,11 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import sortArrowUp from "../static/sort-arrow-up.svg";
 import sortArrowDown from "../static/sort-arrow-down.png";
 import sortArray from "../utils/config";
 import { selectFilter, setSortType } from "../redux/slices/filterSlice";
 
-const Sort = () => {
+const Sort: FC = () => {
   const dispatch = useDispatch();
   const { sortType } = useSelector(selectFilter);
   const [isOpen, setIsOpen] = useState(false);

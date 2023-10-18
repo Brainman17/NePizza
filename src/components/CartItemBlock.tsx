@@ -4,18 +4,9 @@ import minus from "../static/minus.svg";
 import deleteBasket from "../static/delete.png";
 import { addItem, removeItem, minusItem } from "../redux/slices/cartSlice";
 import { FC } from "react";
+import { CartItem } from "../redux/slices/cartSlice";
 
-type CartItemProps = {
-  id: string;
-  imageUrl: string;
-  price: number;
-  title: string;
-  type: string;
-  size: number;
-  count: number;
-};
-
-const CartItem: FC<CartItemProps> = ({
+const CartItemBlock: FC<CartItem> = ({
   id,
   imageUrl,
   price,
@@ -27,16 +18,16 @@ const CartItem: FC<CartItemProps> = ({
   const dispatch = useDispatch();
 
   const onClickPlus = () => {
-    dispatch(addItem({ id }));
+    dispatch(addItem({ id } as CartItem));
   };
 
   const onClickMinus = () => {
-    dispatch(minusItem({ id }));
+    dispatch(minusItem(id));
   };
 
   const onClickRemove = () => {
     if (window.confirm("Ты точно хочешь удалить пиццу?")) {
-      dispatch(removeItem({ id }));
+      dispatch(removeItem(id));
     }
   };
 
@@ -76,4 +67,4 @@ const CartItem: FC<CartItemProps> = ({
   );
 };
 
-export default CartItem;
+export default CartItemBlock;

@@ -3,9 +3,10 @@ import { setCurrentPage } from "../../redux/slices/filterSlice";
 import styles from "./Pagination.module.scss";
 import { useDispatch } from "react-redux";
 import { FC } from "react";
+import { Pizza } from "../../redux/slices/pizzasSlice";
 
 type PaginationProps = {
-  items: [];
+  items: Pizza[];
   currentPage: number;
 };
 
