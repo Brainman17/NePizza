@@ -9,9 +9,33 @@
   text-align: center;
   cursor: pointer;
   transition: background-color $duration ease-in-out,
-    border-color $duration ease-in-out;
+  border-color $duration ease-in-out;
   border: 1px solid transparent;
   @include noselect();
+
+  &:disabled {
+    border-color: $ddd;
+    opacity: .5;
+
+    svg {
+      path {
+        fill: $ddd
+      }
+    }
+
+    &:active {
+      transform: none;
+    }
+
+    &:hover {
+      cursor: default;
+      background-color: transparent;
+      
+      svg path {
+        fill: $ddd;
+      }
+    }
+  }
 
   &,
   span {

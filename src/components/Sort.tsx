@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, FC } from "react";
+import { useRef, useState, useEffect, FC, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import sortArrowUp from "../static/sort-arrow-up.svg";
 import sortArrowDown from "../static/sort-arrow-down.png";
@@ -11,6 +11,8 @@ const Sort: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const sortRef = useRef<HTMLDivElement>(null);
+
+  console.log("Sort render");
 
   const handlePopup = (bool: boolean) => {
     setIsOpen(bool);
@@ -73,4 +75,4 @@ const Sort: FC = () => {
   );
 };
 
-export default Sort;
+export default memo(Sort);

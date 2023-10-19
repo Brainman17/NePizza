@@ -1,4 +1,4 @@
-import { useEffect, useRef, FC } from "react";
+import { useEffect, useRef, FC, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
@@ -81,8 +81,6 @@ const HomePage: FC = () => {
   //       (sort) => sort.sortProperty === params.sortBy
   //     );
 
-  //     console.log(params);
-
   //     dispatch(
   //       setFilters({
   //         searchValue: String(params.titleValue),
@@ -106,9 +104,9 @@ const HomePage: FC = () => {
   }, [categoryId, sortType, searchValue, currentPage]);
 
   // functions
-  const onChangeCategory = (id: number) => {
+  const onChangeCategory = useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  };
+  }, []);
 
   const skeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
 
