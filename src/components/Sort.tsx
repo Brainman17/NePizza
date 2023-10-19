@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import sortArrowUp from "../static/sort-arrow-up.svg";
 import sortArrowDown from "../static/sort-arrow-down.png";
 import sortArray from "../utils/config";
-import { selectFilter, setSortType } from "../redux/slices/filterSlice";
+import { setSortType } from "../redux/slices/filter/slice";
+import { selectFilter } from "../redux/slices/filter/selectors";
 
 const Sort: FC = () => {
   const dispatch = useDispatch();

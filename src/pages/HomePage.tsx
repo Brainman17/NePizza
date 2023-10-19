@@ -1,26 +1,19 @@
 import { useEffect, useRef, FC, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import qs from "qs";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock";
 import Pagination from "../components/Pagination";
 import ServerError from "../components/ServerError";
-import {
-  selectFilter,
-  setCategoryId,
-  setFilters,
-} from "../redux/slices/filterSlice";
-import sortArray from "../utils/config";
-import {
-  fetchPizzas,
-  selectPizzaData,
-  FetchPizzasParams,
-} from "../redux/slices/pizzasSlice";
 import { useAppDispatch } from "../redux/store";
-import { Status } from "../redux/slices/pizzasSlice";
+import { StatusEnum } from "../redux/slices/pizza/types";
+import { setLocalStorage } from "../utils/localStorage";
+import { selectFilter } from "../redux/slices/filter/selectors";
+import { setCategoryId } from "../redux/slices/filter/slice";
+import { selectPizzaData } from "../redux/slices/pizza/selectors";
+import { fetchPizzas } from "../redux/slices/pizza/slice";
 
 const HomePage: FC = () => {
   const isSearch = useRef(false);
@@ -103,6 +96,10 @@ const HomePage: FC = () => {
     isSearch.current = false;
   }, [categoryId, sortType, searchValue, currentPage]);
 
+  useEffect(() => {
+    setLocalStorage("currentPage", currentPage);
+  }, [currentPage]);
+
   // functions
   const onChangeCategory = useCallback((id: number) => {
     dispatch(setCategoryId(id));
@@ -119,11 +116,11 @@ const HomePage: FC = () => {
   });
 
   const itemsRender = () => {
-    if (status === Status.SUCCESS) {
+    if (status === StatusEnum.SUCCESS) {
       return itemsMap;
-    } else if (status === Status.LOADING) {
+    } else if (status === StatusEnum.LOADING) {
       return skeletons;
-    } else if (status === Status.ERROR) {
+    } else if (status === StatusEnum.ERROR) {
       return <ServerError />;
     }
   };

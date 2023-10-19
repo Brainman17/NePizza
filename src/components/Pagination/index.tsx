@@ -1,9 +1,9 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { setCurrentPage } from "../../redux/slices/filterSlice";
+import { setCurrentPage } from "../../redux/slices/filter/slice";
 import styles from "./Pagination.module.scss";
 import { useDispatch } from "react-redux";
 import { FC } from "react";
-import { Pizza } from "../../redux/slices/pizzasSlice";
+import { Pizza } from "../../redux/slices/pizza/types";
 
 type PaginationProps = {
   items: Pizza[];

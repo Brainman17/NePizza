@@ -1,31 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { BASEURL } from "../../constants/api";
+import { BASEURL } from "../../../constants/api";
 import axios from "axios";
-import { RootState } from "../store";
-import { Sort } from "./filterSlice";
+import { Pizza, StatusEnum, pizzasSliceState } from "./types";
 
-export enum Status {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error'
-}
-
-// BLL
-export type Pizza = {
-  id: string;
-  title: string;
-  imageUrl: string;
-  price: number;
-  types: number[];
-  sizes: number[];
-  rating: number;
-};
-
-interface pizzasSliceState {
-  items: Pizza[];
-  item: Pizza;
-  status: Status.LOADING | Status.SUCCESS | Status.ERROR;
-}
 
 const initialState: pizzasSliceState = {
   items: [],
@@ -38,7 +15,7 @@ const initialState: pizzasSliceState = {
     types: [0, 1],
     sizes: [25, 30, 40]
   },
-  status: Status.LOADING,
+  status: StatusEnum.LOADING,
 };
 
 const pizzasSlice = createSlice({
@@ -55,15 +32,15 @@ const pizzasSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchPizzas.pending, (state) => {
-        state.status = Status.LOADING;
+        state.status = StatusEnum.LOADING;
         state.items = [];
       })
       .addCase(fetchPizzas.fulfilled, (state, action: PayloadAction<Pizza[]>) => {
         state.items = action.payload;
-        state.status = Status.SUCCESS;
+        state.status = StatusEnum.SUCCESS;
       })
       .addCase(fetchPizzas.rejected, (state) => {
-        state.status = Status.ERROR;
+        state.status = StatusEnum.ERROR;
         state.items = [];
       });
   },
@@ -86,14 +63,13 @@ export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzasStatus",
   async (params: FetchPizzasParams) => {
     const { currentPage, category, sortBy, order, titleValue } = params;
-    const {data} = await axios.get<Pizza[]>( 
+    const { data } = await axios.get<Pizza[]>( 
       `${BASEURL}/?page=${currentPage}&limit=4${category}&sortBy=${sortBy}&order=${order}${titleValue}`
     );
     return data as Pizza[];
   }
 );
 
-export const selectPizzaData = (state: RootState) => state.pizzasSlice;
 
 export const { setItems, setPizzaItem } = pizzasSlice.actions;
 

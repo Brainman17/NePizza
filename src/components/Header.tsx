@@ -3,16 +3,28 @@ import { useSelector } from "react-redux";
 import logo from "../static/pizza-logo.png";
 import basket from "../static/basket.svg";
 import Search from "./Search";
-import { selectCart } from "../redux/slices/cartSlice";
-import { FC } from "react";
+import { selectCart } from "../redux/slices/cart/selectors";
+import { FC, useEffect, useRef } from "react";
+import { setLocalStorage } from "../utils/localStorage";
 
 const Header: FC = () => {
   const { pathname } = useLocation();
   const { items, totalPrice } = useSelector(selectCart);
+  const isMounted = useRef(false);
 
   const totalCount = items.reduce((sum: number, item: any) => {
     return sum + item.count;
   }, 0);
+
+  // Сохраняем пиццы в LS
+  useEffect(() => {
+    if (isMounted.current) {
+      // При первом рендере isMounted false и пиццы не в LS не сохраняются
+      setLocalStorage("items", items);
+      setLocalStorage("totalPrice", totalPrice);
+    }
+    isMounted.current = true;
+  }, [items]);
 
   return (
     <div className="header">

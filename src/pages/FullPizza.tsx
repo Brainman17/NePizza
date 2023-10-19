@@ -3,7 +3,8 @@ import { useEffect, FC } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BASEURL } from "../constants/api";
 import { useDispatch, useSelector } from "react-redux";
-import { selectPizzaData, setPizzaItem } from "../redux/slices/pizzasSlice";
+import { setPizzaItem } from "../redux/slices/pizza/slice";
+import { selectPizzaData } from "../redux/slices/pizza/selectors";
 
 const FullPizza: FC = () => {
   const { id } = useParams();

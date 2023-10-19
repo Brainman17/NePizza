@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import deleteBasket from "../static/delete.png";
-import { addItem, removeItem, minusItem } from "../redux/slices/cartSlice";
+import { addItem, removeItem, minusItem } from "../redux/slices/cart/slice";
 import { FC } from "react";
-import { CartItem } from "../redux/slices/cartSlice";
+import { CartItem } from "../redux/slices/cart/types";
 
 const CartItemBlock: FC<CartItem> = ({
   id,

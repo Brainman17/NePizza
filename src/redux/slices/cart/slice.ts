@@ -1,25 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../store";
-
-export type CartItem = {
-  id: string;
-  title: string;
-  imageUrl: string;
-  price: number;
-  type: string;
-  size: number;
-  count: number;
-};
-
-interface CartSliceState {
-  totalPrice: number;
-  items: CartItem[];
-}
+import { getLocalStorage } from "../../../utils/localStorage";
+import { CartItem, CartSliceState } from "./types";
 
 // state обычно типизируют интерфейсом
 const initialState: CartSliceState = {
-  totalPrice: 0,
-  items: [],
+  totalPrice: getLocalStorage('totalPrice'),
+  items: getLocalStorage('items'),
 };
 
 const cartSlice = createSlice({
@@ -59,8 +45,6 @@ const cartSlice = createSlice({
     },
   },
 });
-
-export const selectCart = (state: RootState) => state.cartSlice;
 
 export const { addItem, removeItem, clearItems, minusItem } = cartSlice.actions;
 

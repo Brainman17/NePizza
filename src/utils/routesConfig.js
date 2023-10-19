@@ -1,7 +1,7 @@
-import Cart from "../containers/Cart";
-import FullPizza from "../containers/FullPizza";
-import HomePage from "../containers/HomePage";
-import NotFound from "../containers/NotFound";
+import Cart from "../pages/Cart";
+import FullPizza from "../pages/FullPizza";
+import HomePage from "../pages/HomePage";
+import NotFound from "../pages/NotFound";
 
 const routesConfig = [
   {

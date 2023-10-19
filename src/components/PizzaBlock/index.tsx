@@ -1,9 +1,11 @@
 import { FC, useState } from "react";
 import add from "../../static/add.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { CartItem, addItem, selectCart } from "../../redux/slices/cartSlice";
+import { addItem } from "../../redux/slices/cart/slice";
+import { selectCart } from "../../redux/slices/cart/selectors";
+import { CartItem } from "../../redux/slices/cart/types";
 import { Link } from "react-router-dom";
-import { Pizza } from "../../redux/slices/pizzasSlice";
+import { Pizza } from "../../redux/slices/pizza/types";
 
 const typeNames = ["тонкое", "традиционное"];
 
