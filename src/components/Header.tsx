@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import logo from "../static/pizza-logo.png";
 import basket from "../static/basket.svg";
 import Search from "./Search";
-import { selectCart } from "../redux/slices/cart/selectors";
+import { selectCart } from "../redux/cart/selectors";
 import { FC, useEffect, useRef } from "react";
 import { setLocalStorage } from "../utils/localStorage";
 

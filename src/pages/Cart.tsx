@@ -5,10 +5,10 @@ import CartItemBlock from "../components/CartItemBlock";
 import cart from "../static/cart.svg";
 import trash from "../static/trash.svg";
 import greyArrowLeft from "../static/grey-arrow-left.svg";
-import { CartItem } from "../redux/slices/cart/types";
-import { clearItems } from "../redux/slices/cart/slice";
+import { CartItem } from "../redux/cart/types";
+import { clearItems } from "../redux/cart/slice";
 import CartEmpty from "../components/CartEmpty";
-import { selectCart } from "../redux/slices/cart/selectors";
+import { selectCart } from "../redux/cart/selectors";
 
 const Cart: FC = () => {
   const { items, totalPrice } = useSelector(selectCart);

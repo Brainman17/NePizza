@@ -8,12 +8,12 @@ import PizzaBlock from "../components/PizzaBlock";
 import Pagination from "../components/Pagination";
 import ServerError from "../components/ServerError";
 import { useAppDispatch } from "../redux/store";
-import { StatusEnum } from "../redux/slices/pizza/types";
+import { StatusEnum } from "../redux/pizza/types";
 import { setLocalStorage } from "../utils/localStorage";
-import { selectFilter } from "../redux/slices/filter/selectors";
-import { setCategoryId } from "../redux/slices/filter/slice";
-import { selectPizzaData } from "../redux/slices/pizza/selectors";
-import { fetchPizzas } from "../redux/slices/pizza/slice";
+import { selectFilter } from "../redux/filter/selectors";
+import { setCategoryId } from "../redux/filter/slice";
+import { selectPizzaData } from "../redux/pizza/selectors";
+import { fetchPizzas } from "../redux/pizza/asyncActions";
 
 const HomePage: FC = () => {
   const isSearch = useRef(false);

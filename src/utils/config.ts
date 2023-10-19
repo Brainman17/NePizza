@@ -1,5 +1,5 @@
-import { Sort } from '../redux/slices/filter/types';
-import { SortPropertyEnum } from '../redux/slices/filter/types';
+import { Sort } from '../redux/filter/types';
+import { SortPropertyEnum } from '../redux/filter/types';
 
 const sortArray: Sort[] = [
   {

@@ -1,7 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { BASEURL } from "../../../constants/api";
-import axios from "axios";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Pizza, StatusEnum, pizzasSliceState } from "./types";
+import { fetchPizzas } from "./asyncActions";
 
 
 const initialState: pizzasSliceState = {
@@ -45,31 +44,6 @@ const pizzasSlice = createSlice({
       });
   },
 });
-
-// DAL
-
- export type FetchPizzasParams = {
-  currentPage: string; 
-  category: string; 
-  sortBy: string; 
-  order: string; 
-  titleValue: string; 
- }
-
- // type FetchPizzasParams = Record<string, string>;
- // Record используем, если все ключи и/или значения одинакового типа
-
-export const fetchPizzas = createAsyncThunk(
-  "pizza/fetchPizzasStatus",
-  async (params: FetchPizzasParams) => {
-    const { currentPage, category, sortBy, order, titleValue } = params;
-    const { data } = await axios.get<Pizza[]>( 
-      `${BASEURL}/?page=${currentPage}&limit=4${category}&sortBy=${sortBy}&order=${order}${titleValue}`
-    );
-    return data as Pizza[];
-  }
-);
-
 
 export const { setItems, setPizzaItem } = pizzasSlice.actions;
 

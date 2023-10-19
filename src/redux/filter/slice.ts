@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getLocalStorage } from "../../../utils/localStorage";
+import { getLocalStorage } from "../../utils/localStorage";
 import { Sort, SortPropertyEnum, filterSliceState } from "./types";
 
 const initialState: filterSliceState = {

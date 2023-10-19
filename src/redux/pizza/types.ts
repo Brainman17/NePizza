@@ -4,7 +4,6 @@ export enum StatusEnum {
     ERROR = 'error'
 }
   
-  // BLL
 export type Pizza = {
     id: string;
     title: string;
@@ -19,4 +18,12 @@ export interface pizzasSliceState {
     items: Pizza[];
     item: Pizza;
     status: StatusEnum.LOADING | StatusEnum.SUCCESS | StatusEnum.ERROR;
+}
+
+export type FetchPizzasParams = {
+    currentPage: string; 
+    category: string; 
+    sortBy: string; 
+    order: string; 
+    titleValue: string; 
 }

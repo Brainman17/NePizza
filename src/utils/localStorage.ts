@@ -1,4 +1,4 @@
-import { CartItem } from "../redux/slices/cart/types";
+import { CartItem } from "../redux/cart/types";
 
 export const getLocalStorage = (key: string) => {
     const data = localStorage.getItem(key);
