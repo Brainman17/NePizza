@@ -98,7 +98,10 @@ const HomePage: FC = () => {
 
   useEffect(() => {
     setLocalStorage("currentPage", currentPage);
-  }, [currentPage]);
+    setLocalStorage("categoryId", categoryId);
+    setLocalStorage("sortType", sortType);
+    setLocalStorage("searchValue", searchValue);
+  }, [currentPage, categoryId, sortType, searchValue]);
 
   // functions
   const onChangeCategory = useCallback((id: number) => {

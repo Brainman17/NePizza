@@ -13,7 +13,7 @@ export type Sort = {
 }
   
 export interface filterSliceState {
-    searchValue?: string;
+    searchValue: string;
     categoryId: number;
     currentPage: number;
     sortType: Sort,
