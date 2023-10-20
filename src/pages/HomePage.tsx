@@ -1,12 +1,14 @@
 import { useEffect, useRef, FC, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock";
 import Pagination from "../components/Pagination";
 import ServerError from "../components/ServerError";
+
 import { useAppDispatch } from "../redux/store";
 import { StatusEnum } from "../redux/pizza/types";
 import { setLocalStorage } from "../utils/localStorage";
@@ -17,7 +19,6 @@ import { fetchPizzas } from "../redux/pizza/asyncActions";
 
 const HomePage: FC = () => {
   const isSearch = useRef(false);
-  const isMounted = useRef(false);
 
   // useSelector
   const { sortType, categoryId, currentPage, searchValue } =
@@ -100,8 +101,7 @@ const HomePage: FC = () => {
     setLocalStorage("currentPage", currentPage);
     setLocalStorage("categoryId", categoryId);
     setLocalStorage("sortType", sortType);
-    setLocalStorage("searchValue", searchValue);
-  }, [currentPage, categoryId, sortType, searchValue]);
+  }, [currentPage, categoryId, sortType]);
 
   // functions
   const onChangeCategory = useCallback((id: number) => {

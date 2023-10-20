@@ -3,7 +3,7 @@ import { getLocalStorage } from "../../utils/localStorage";
 import { Sort, filterSliceState } from "./types";
 
 const initialState: filterSliceState = {
-  searchValue: getLocalStorage('searchValue'),
+  searchValue: '',
   categoryId: getLocalStorage('categoryId'),
   currentPage: getLocalStorage('currentPage'),
   sortType: getLocalStorage('sortType'),

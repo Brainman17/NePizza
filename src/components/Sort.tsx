@@ -13,8 +13,6 @@ const Sort: FC = () => {
 
   const sortRef = useRef<HTMLDivElement>(null);
 
-  console.log("Sort render");
-
   const handlePopup = (bool: boolean) => {
     setIsOpen(bool);
   };

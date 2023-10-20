@@ -1,14 +1,19 @@
-import { FC, useEffect } from "react";
+import { FC, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import CartItemBlock from "../components/CartItemBlock";
+
 import cart from "../static/cart.svg";
 import trash from "../static/trash.svg";
 import greyArrowLeft from "../static/grey-arrow-left.svg";
+
 import { CartItem } from "../redux/cart/types";
 import { clearItems } from "../redux/cart/slice";
-import CartEmpty from "../components/CartEmpty";
 import { selectCart } from "../redux/cart/selectors";
+
+import CartEmpty from "../components/CartEmpty";
+import UiPreloader from "../components/UiPreloader/UiPreloader";
+
+const CartItemBlock = lazy(() => import("../components/CartItemBlock"));
 
 const Cart: FC = () => {
   const { items, totalPrice } = useSelector(selectCart);
@@ -45,9 +50,11 @@ const Cart: FC = () => {
               </div>
             </div>
             <div className="cart__items">
-              {items.map((item: CartItem) => (
-                <CartItemBlock key={item.id} {...item} />
-              ))}
+              <Suspense fallback={<UiPreloader />}>
+                {items.map((item: CartItem) => (
+                  <CartItemBlock key={item.id} {...item} />
+                ))}
+              </Suspense>
             </div>
             <div className="cart__bottom">
               <div className="cart__bottom-details">
