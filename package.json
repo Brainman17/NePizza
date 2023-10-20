@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.2.13",
     "axios": "^1.5.1",
     "classnames": "^2.3.2",
+    "gh-pages": "^6.0.0",
     "install": "^0.13.0",
     "lodash.debounce": "^4.0.8",
     "npm": "^10.2.0",
@@ -27,6 +28,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.69.0",
     "scss": "^0.2.4",
+    "typescript": "^5.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -80,4 +82,3 @@
     "diagnosticInformationMap.generated.ts"
   ]
 }
-

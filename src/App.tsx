@@ -1,15 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import routesConfig from "./utils/routesConfig";
 import "./scss/app.scss";
 import Layout from "./components/Layout";
+import Cart from "./pages/Cart";
+import HomePage from "./pages/HomePage";
+import FullPizza from "./pages/FullPizza";
+import NotFound from "./pages/NotFound";
 
 const App: React.FC = () => {
   return (
     <Layout>
       <Routes>
-        {routesConfig.map((route, i) => {
-          return <Route key={i} path={route.path} element={route.element} />;
-        })}
+        <Route path="/" element={<HomePage />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="pizza/:id" element={<FullPizza />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );
