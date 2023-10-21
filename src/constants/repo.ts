@@ -1,1 +1,1 @@
-export const REPO_NAME: string = "pizza";
+export const REPO_NAME: string = "ne-pizza";
