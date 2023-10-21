@@ -1,7 +1,7 @@
 {
-  "name": "pizzaaa",
+  "name": "pizza",
   "version": "0.1.0",
-  "homepage": "https://brainman17.github.io/pizzaaa/",
+  "homepage": "https://brainman17.github.io/pizza/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
