@@ -6,15 +6,19 @@ import App from "./App";
 import store from "./redux/store";
 import { REPO_NAME } from "./constants/repo";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <BrowserRouter basename={"/ne-pizza/"}>
+// const root = ReactDOM.createRoot(
+//   document.getElementById("root")
+// );
+const rootElem = document.getElementById("root");
+
+if (rootElem) {
+  const root = ReactDOM.createRoot(rootElem);
+
+  root.render(
+    <BrowserRouter basename={`/${REPO_NAME}/`}>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
-);
+  );
+}
