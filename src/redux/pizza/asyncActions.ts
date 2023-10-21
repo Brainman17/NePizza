@@ -6,7 +6,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 // DAL
  // type FetchPizzasParams = Record<string, string>;
  // Record используем, если все ключи и/или значения одинакового типа
- 
+
  export const fetchPizzas = createAsyncThunk(
     "pizza/fetchPizzasStatus",
     async (params: FetchPizzasParams) => {

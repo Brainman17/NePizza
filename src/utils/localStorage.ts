@@ -11,3 +11,4 @@ export const getLocalStorage = (key: string) => {
 export const setLocalStorage = (key: string, data: CartItem[] | number | Sort | string) => {
     localStorage.setItem(key, JSON.stringify(data))
 }
+
