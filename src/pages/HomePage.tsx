@@ -1,6 +1,5 @@
 import { useEffect, useRef, FC, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -28,9 +27,6 @@ const HomePage: FC = () => {
 
   // useDispatch
   const dispatch = useAppDispatch();
-
-  // useNavigate
-  const navigate = useNavigate();
 
   // useEffect
   const getPizzas = () => {
