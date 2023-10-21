@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/pizza/static/css/main.1ed04b84.css",
+    "main.js": "/pizza/static/js/main.c0b0d08d.js",
+    "static/js/680.b12abb22.chunk.js": "/pizza/static/js/680.b12abb22.chunk.js",
+    "static/media/free-icon-close-3926754.png": "/pizza/static/media/free-icon-close-3926754.72b03b9ccc684e8881d3.png",
+    "static/media/thinking.png": "/pizza/static/media/thinking.2b4609a98cd80948be46.png",
+    "static/media/pizza-logo.png": "/pizza/static/media/pizza-logo.c2a4fb893f3e418f3f1a.png",
+    "static/media/empty-cart.png": "/pizza/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "static/media/delete.png": "/pizza/static/media/delete.85ef3dca762d0d8a97e7.png",
+    "static/media/404-error.png": "/pizza/static/media/404-error.8e2da0ba500133cd6013.png",
+    "static/media/cube.svg": "/pizza/static/media/cube.3b65b1c65549b24c1166da05b99a5b0b.svg",
+    "static/media/basket.svg": "/pizza/static/media/basket.d06a24bd3b6fb6f61baba2882b82fafb.svg",
+    "static/media/cart.svg": "/pizza/static/media/cart.fd4cf8bc40e00b4287079cdf3e0ccec3.svg",
+    "static/media/trash.svg": "/pizza/static/media/trash.f5415d6671194988a0e5d7a1da348253.svg",
+    "index.html": "/pizza/index.html",
+    "static/media/sort-arrow-up.svg": "/pizza/static/media/sort-arrow-up.5bc8da159f414cead9678af8fe2f226e.svg",
+    "static/media/add.svg": "/pizza/static/media/add.598fcf4acd7231c9d99d13a5b718098a.svg",
+    "static/media/grey-arrow-left.svg": "/pizza/static/media/grey-arrow-left.caccf781ff5f41c97e2051163f3064ef.svg",
+    "main.1ed04b84.css.map": "/pizza/static/css/main.1ed04b84.css.map",
+    "main.c0b0d08d.js.map": "/pizza/static/js/main.c0b0d08d.js.map",
+    "680.b12abb22.chunk.js.map": "/pizza/static/js/680.b12abb22.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ed04b84.css",
+    "static/js/main.c0b0d08d.js"
+  ]
+}
