@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={`${REPO_NAME}`}>
+    <BrowserRouter basename={"/ne-pizza/"}>
       <Provider store={store}>
         <App />
       </Provider>
