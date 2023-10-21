@@ -1,7 +1,7 @@
 {
   "name": "ne-pizza",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://brainman17.github.io/ne-pizza/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
