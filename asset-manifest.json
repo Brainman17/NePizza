@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ne-pizza/static/css/main.1ed04b84.css",
-    "main.js": "/ne-pizza/static/js/main.9bfa1896.js",
+    "main.js": "/ne-pizza/static/js/main.b5623067.js",
     "static/js/680.176b6b2b.chunk.js": "/ne-pizza/static/js/680.176b6b2b.chunk.js",
     "static/media/free-icon-close-3926754.png": "/ne-pizza/static/media/free-icon-close-3926754.72b03b9ccc684e8881d3.png",
     "static/media/thinking.png": "/ne-pizza/static/media/thinking.2b4609a98cd80948be46.png",
@@ -18,11 +18,11 @@
     "static/media/add.svg": "/ne-pizza/static/media/add.598fcf4acd7231c9d99d13a5b718098a.svg",
     "static/media/grey-arrow-left.svg": "/ne-pizza/static/media/grey-arrow-left.caccf781ff5f41c97e2051163f3064ef.svg",
     "main.1ed04b84.css.map": "/ne-pizza/static/css/main.1ed04b84.css.map",
-    "main.9bfa1896.js.map": "/ne-pizza/static/js/main.9bfa1896.js.map",
+    "main.b5623067.js.map": "/ne-pizza/static/js/main.b5623067.js.map",
     "680.176b6b2b.chunk.js.map": "/ne-pizza/static/js/680.176b6b2b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ed04b84.css",
-    "static/js/main.9bfa1896.js"
+    "static/js/main.b5623067.js"
   ]
 }
