@@ -1,6 +1,6 @@
 import { calcTotalPrice } from './calcTotalPrice';
 import { CartItem } from "../redux/cart/types";
-import { Sort } from "../redux/filter/types";
+import { Sort, SortPropertyEnum } from "../redux/filter/types";
 
 export const getCartFromLS = () => {
     const data = localStorage.getItem('items');
@@ -13,11 +13,26 @@ export const getCartFromLS = () => {
     }
 }
 
-export const getLocalStorage = (key: string) => {
-    const data = localStorage.getItem(key);
-    if(data !== null) {
-        return JSON.parse(data);
-    } return []
+export const getCategoryIdFromLS = () => {
+    const data = localStorage.getItem('categoryId');
+    const json = data ? JSON.parse(data) : 0;
+
+    return json;
+}
+export const getCurrentPageFromLS = () => {
+    const data = localStorage.getItem('currentPage');
+    const json = data ? JSON.parse(data) : 1;
+
+    return json;
+}
+export const getSortTypeFromLS = () => {
+    const data = localStorage.getItem('sortType');
+    const json = data ? JSON.parse(data) : {
+        name: 'популярности',
+        sortProperty: SortPropertyEnum.RATING_DESC,
+      };
+
+    return json;
 }
 
 export const setLocalStorage = (key: string, data: CartItem[] | number | Sort | string) => {
