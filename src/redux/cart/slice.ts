@@ -4,8 +4,8 @@ import { CartItem, CartSliceState } from "./types";
 
 // state обычно типизируют интерфейсом
 const initialState: CartSliceState = {
-  totalPrice: getLocalStorage('totalPrice'),
-  items: getLocalStorage('items'),
+  totalPrice: getLocalStorage('totalPrice') || 0,
+  items: getLocalStorage('items') || [],
 };
 
 const cartSlice = createSlice({

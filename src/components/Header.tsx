@@ -16,6 +16,9 @@ const Header: FC = () => {
     return sum + item.count;
   }, 0);
 
+  // console.log("totalPrice > ", totalPrice);
+  // console.log("items > ", items);
+
   // Сохраняем пиццы в LS
   useEffect(() => {
     if (isMounted.current) {

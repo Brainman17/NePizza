@@ -4,9 +4,9 @@ import { Sort, SortPropertyEnum, filterSliceState } from "./types";
 
 const initialState: filterSliceState = {
   searchValue: '',
-  categoryId: getLocalStorage('categoryId'),
-  currentPage: getLocalStorage('currentPage'),
-  sortType:{
+  categoryId: getLocalStorage('categoryId') || 0,
+  currentPage: getLocalStorage('currentPage') || 1,
+  sortType: getLocalStorage('sortType') || {
     name: 'популярности',
     sortProperty: SortPropertyEnum.RATING_DESC,
   },
