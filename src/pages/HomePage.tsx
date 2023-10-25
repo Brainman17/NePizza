@@ -31,9 +31,12 @@ const HomePage: FC = () => {
   // useEffect
   const getPizzas = () => {
     const category = categoryId > 0 ? `&category=${categoryId}` : "";
-    const sortBy = sortType.sortProperty.replace("-", "");
+    const sortBy = sortType.sortProperty.replace("-", "") || "rating";
     const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
     const titleValue = searchValue && `&title=${searchValue}`;
+
+    console.log("sortBy >", sortBy);
+    console.log("order >", order);
 
     dispatch(
       fetchPizzas({
