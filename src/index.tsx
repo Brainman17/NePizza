@@ -16,7 +16,7 @@ if (rootElem) {
 
   root.render(
     <React.StrictMode>
-      <BrowserRouter basename="/ne-pizza/">
+      <BrowserRouter>
         <Provider store={store}>
           <App />
         </Provider>
