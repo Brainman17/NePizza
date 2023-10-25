@@ -1,12 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { getLocalStorage } from "../../utils/localStorage";
-import { Sort, filterSliceState } from "./types";
+import { Sort, SortPropertyEnum, filterSliceState } from "./types";
 
 const initialState: filterSliceState = {
   searchValue: '',
   categoryId: getLocalStorage('categoryId'),
   currentPage: getLocalStorage('currentPage'),
-  sortType: getLocalStorage('sortType'),
+  sortType:{
+    name: 'популярности',
+    sortProperty: SortPropertyEnum.RATING_DESC,
+  },
 };
 
 const filterSlice = createSlice({
