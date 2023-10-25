@@ -35,10 +35,6 @@ const HomePage: FC = () => {
     const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
     const titleValue = searchValue && `&title=${searchValue}`;
 
-    // console.log("sortBy >", sortBy);
-    // console.log("order >", order);
-    // console.log("categoryId >", categoryId);
-
     dispatch(
       fetchPizzas({
         currentPage: String(currentPage),

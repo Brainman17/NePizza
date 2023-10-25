@@ -2,7 +2,7 @@
 
 ## 🎫 Links
 
-- `Ссылка на GitHub Pages` https://brainman17.github.io/react-star-wars/
+- `Ссылка на GitHub Pages` https://brainman17.github.io/ne-pizza/
 - `Курс` https://www.youtube.com/playlist?list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl
 
 ## 🧾 Scripts and Commands
