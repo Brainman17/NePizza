@@ -13,16 +13,9 @@ const Header: FC = () => {
   const { items, totalPrice } = useSelector(selectCart);
   const isMounted = useRef(false);
 
-  console.log(items);
-
-  const totalCount = items
-    ? items.reduce((sum: number, item: CartItem) => {
-        return sum + item.count;
-      }, 0)
-    : 0;
-
-  // console.log("totalPrice > ", totalPrice);
-  // console.log("items > ", items);
+  const totalCount = items.reduce((sum: number, item: CartItem) => {
+    return sum + item.count;
+  }, 0);
 
   // Сохраняем пиццы в LS
   useEffect(() => {
