@@ -6,14 +6,17 @@ import Search from "./Search";
 import { selectCart } from "../redux/cart/selectors";
 import { FC, useEffect, useRef } from "react";
 import { setLocalStorage } from "../utils/localStorage";
+import { CartItem } from "../redux/cart/types";
 
 const Header: FC = () => {
   const { pathname } = useLocation();
   const { items, totalPrice } = useSelector(selectCart);
   const isMounted = useRef(false);
 
+  console.log(items);
+
   const totalCount = items
-    ? items.reduce((sum: number, item: any) => {
+    ? items.reduce((sum: number, item: CartItem) => {
         return sum + item.count;
       }, 0)
     : 0;
