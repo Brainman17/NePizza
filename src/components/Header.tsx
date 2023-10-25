@@ -12,9 +12,11 @@ const Header: FC = () => {
   const { items, totalPrice } = useSelector(selectCart);
   const isMounted = useRef(false);
 
-  const totalCount = items.reduce((sum: number, item: any) => {
-    return sum + item.count;
-  }, 0);
+  const totalCount = items
+    ? items.reduce((sum: number, item: any) => {
+        return sum + item.count;
+      }, 0)
+    : 0;
 
   // console.log("totalPrice > ", totalPrice);
   // console.log("items > ", items);
