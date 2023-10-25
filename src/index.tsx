@@ -14,11 +14,15 @@ const rootElem = document.getElementById("root");
 if (rootElem) {
   const root = ReactDOM.createRoot(rootElem);
 
+  // console.log(process);
+
   root.render(
-    <BrowserRouter basename={`/${REPO_NAME}/`}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <React.StrictMode>
+      <BrowserRouter basename={`/${REPO_NAME}`}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </React.StrictMode>
   );
 }
